@@ -2,7 +2,10 @@
 using NUnit.Framework.Internal;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,8 +34,14 @@ namespace QAA_v1
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            //driver = new ChromeDriver();
+            driver = new FirefoxDriver();
             driver.Navigate().GoToUrl(_testwebsite);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10); //adding implicit wait
+
+            // WebDriverWait waitObj = new WebDriverWait(driver, TimeSpan.FromSeconds(10)); // create webdriver object with timeout 10 seconds
+            // IWebElement click_button = waitObj.Until(e => e.FindElement(_loginButton)); // caused internally by Element not found exception. else it will execute further. 
+            // click_button.Click();
             driver.Manage().Window.Maximize();
         }
 
@@ -41,6 +50,10 @@ namespace QAA_v1
         {
             int millisecondsToWait = 1000;
             Thread.Sleep(millisecondsToWait);
+
+            string title = driver.Title;
+            Console.WriteLine($"The title of the site is: {title}''");
+            Assert.AreEqual(_expecteAppLogoValue, title, $"Error. Expected value: {_expecteAppLogoValue}");
 
             var usernameField = driver.FindElement(_usernameValue);
             usernameField.SendKeys("standard_user");
