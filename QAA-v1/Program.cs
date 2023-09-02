@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Internal;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,7 @@ namespace QAA_v1
     public class Tests
     {
         private IWebDriver driver;
-
-        private const string _testwebsite = "https://www.saucedemo.com/";
+        public const string _testwebsite = "https://www.saucedemo.com/";
         private const string _username = "user-name";
         private const string _password = "password";
         private const string _expecteAppLogoValue = "Swag Labs";
@@ -30,13 +31,13 @@ namespace QAA_v1
         [SetUp]
         public void Setup()
         {
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            driver = new ChromeDriver();
             driver.Navigate().GoToUrl(_testwebsite);
             driver.Manage().Window.Maximize();
         }
 
         [Test]
-        public void Test1()
+        public void Test()
         {
             int millisecondsToWait = 1000;
             Thread.Sleep(millisecondsToWait);
@@ -58,7 +59,7 @@ namespace QAA_v1
         [TearDown]
         public void TearDown()
         {
-            int millisecondsToWait = 1000;
+            int millisecondsToWait = 3000;
             Thread.Sleep(millisecondsToWait);
             driver.Close();
             driver.Quit();
