@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace QAA_v1
 {
     [TestFixture]
-    public class Tests
+    public class Tests1
     {
         private IWebDriver driver;
         public const string _testwebsite = "https://www.saucedemo.com/";
