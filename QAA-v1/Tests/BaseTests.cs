@@ -13,7 +13,7 @@ namespace QAA_v1.Tests
     internal class BaseTests
     {
         //public IWebDriver driver = new OpenQA.Selenium.Chrome.ChromeDriver();
-        public IWebDriver driver;
+        public IWebDriver driver = null;
 
         public const string _testwebsite = "https://www.saucedemo.com/";
 

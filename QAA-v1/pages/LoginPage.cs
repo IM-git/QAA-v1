@@ -17,17 +17,17 @@ namespace QAA_v1.pages
         private readonly By _passwordValue = By.Id(_password);
         private readonly By _loginButton = By.Id(_loginButtonID);
 
-        public LoginPage(IWebDriver webDriver) => Driver = webDriver;
+        public LoginPage(IWebDriver webDriver) => driver = webDriver;
 
-        private IWebDriver Driver { get; }
+        public IWebDriver driver { get; }
 
-        IWebElement usernameField => Driver.FindElement(_usernameValue);
-        IWebElement passwordField => Driver.FindElement(_passwordValue);
-        IWebElement signInButton => Driver.FindElement(_loginButton);
+        IWebElement usernameField => driver.FindElement(_usernameValue);
+        IWebElement passwordField => driver.FindElement(_passwordValue);
+        IWebElement signInButton => driver.FindElement(_loginButton);
 
         public void EnterUserName() => usernameField.SendKeys("standard_user");
         public void EnterPassword() => passwordField.SendKeys("secret_sauce");
         public void ClickSignInButton() => signInButton.Click();
-        public void ClosePage() => Driver.Close();
+        public void ClosePage() => driver.Close();
     }
 }
