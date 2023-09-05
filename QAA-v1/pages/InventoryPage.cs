@@ -18,12 +18,16 @@ namespace QAA_v1.pages
         private const string _inventoryItem5 = "(// div[@class =\"inventory_item_name\"])[5]";
         private const string _inventoryItem6 = "(// div[@class =\"inventory_item_name\"])[6]";
 
-        private readonly By _addToCartSauceLabsBackpackButtonIDValue = By.XPath(_addToCartSauceLabsBackpackButtonID);
+        private readonly By _addToCartSauceLabsBackpackButtonIDValue = By.Id(_addToCartSauceLabsBackpackButtonID);
+
+        private readonly By _InventoryItemSauceLabsBackpackItemXpath = By.XPath(_inventoryItemSauceLabsBackpack);
 
         public InventoryPage(IWebDriver webDriver) => driver = webDriver;
         public IWebDriver driver { get; }
 
         IWebElement addToCartSauceLabsBackpackButtonField => driver.FindElement(_addToCartSauceLabsBackpackButtonIDValue);
-        public void ClickSignInButton() => addToCartSauceLabsBackpackButtonField.Click();
+        IWebElement inventoryItemSauceLabsBackpackItemXpathField => driver.FindElement(_InventoryItemSauceLabsBackpackItemXpath);
+        public void ClickAddToCartButton() => addToCartSauceLabsBackpackButtonField.Click();
+        public void ClickByInventoryItemSauceLabsBackpackItem() => inventoryItemSauceLabsBackpackItemXpathField.Click();
     }
 }

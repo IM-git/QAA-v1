@@ -9,12 +9,15 @@ namespace QAA_v1.pages
 {
     internal class LoginPage
     {
-        private const string _username = "user-name";
-        private const string _password = "password";
+        private const string _username = "standard_user";
+        private const string _password = "secret_sauce";
+
+        private const string _usernameID = "user-name";
+        private const string _passwordID = "password";
         private const string _loginButtonID = "login-button";
 
-        private readonly By _usernameValue = By.Id(_username);
-        private readonly By _passwordValue = By.Id(_password);
+        private readonly By _usernameValue = By.Id(_usernameID);
+        private readonly By _passwordValue = By.Id(_passwordID);
         private readonly By _loginButton = By.Id(_loginButtonID);
 
         public LoginPage(IWebDriver webDriver) => driver = webDriver;
@@ -25,8 +28,8 @@ namespace QAA_v1.pages
         IWebElement passwordField => driver.FindElement(_passwordValue);
         IWebElement signInButton => driver.FindElement(_loginButton);
 
-        public void EnterUserName() => usernameField.SendKeys("standard_user");
-        public void EnterPassword() => passwordField.SendKeys("secret_sauce");
+        public void EnterUserName() => usernameField.SendKeys(_username);
+        public void EnterPassword() => passwordField.SendKeys(_password);
         public void ClickSignInButton() => signInButton.Click();
         public void ClosePage() => driver.Close();
 

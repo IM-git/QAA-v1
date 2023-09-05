@@ -45,7 +45,7 @@ namespace QAA_v1
             driver.Manage().Window.Maximize();
         }
 
-        [Test, Category("FireFox")]
+        [Test, Category("FireFox"), Category("Sepate example")]
         public void Test()
         {
             int millisecondsToWait = 1000;

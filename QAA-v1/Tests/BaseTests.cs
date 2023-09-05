@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using QAA_v1.pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,13 @@ namespace QAA_v1.Tests
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl(_testwebsite);
             driver.Manage().Window.Maximize();
+        }
+
+        public void LoginOnPage()
+        {
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.LoginOnPage();
+
         }
 
         [TearDown]
