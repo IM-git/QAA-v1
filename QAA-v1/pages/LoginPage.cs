@@ -29,5 +29,12 @@ namespace QAA_v1.pages
         public void EnterPassword() => passwordField.SendKeys("secret_sauce");
         public void ClickSignInButton() => signInButton.Click();
         public void ClosePage() => driver.Close();
+
+        public void LoginOnPage()
+        {
+            EnterUserName();
+            EnterPassword();
+            ClickSignInButton();
+        }
     }
 }
