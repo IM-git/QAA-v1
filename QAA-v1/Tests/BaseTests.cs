@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace QAA_v1.Tests
 {
-    internal class BaseTests
+    public class BaseTests
     {
         //public IWebDriver driver = new OpenQA.Selenium.Chrome.ChromeDriver();
         public IWebDriver driver = null;
@@ -34,21 +34,17 @@ namespace QAA_v1.Tests
 
         }
 
-        public void CheckValue(string value)
+        public void CheckValue(string value, string checker)
         {
-            Assert.AreEqual("1", value, $"Error. Expected value: {value}");
-            //if (value != "1")
-            //{
-            //    //Console.WriteLine("Not equals 1");
-            //    Assert.AreEqual("1", value, $"Error. Expected value: {value}");
-            //    driver.Close();
-            //}
+            Assert.AreEqual(checker, value, $"Error. Expected value: {value}");
         }
+
+        public string GetStringValue(string CssValue) => driver.FindElement(By.CssSelector(CssValue)).Text;
 
         [TearDown]
         public void TearDown()
         {
-            int millisecondsToWait = 1000; // 1 секунда = 1000 миллисекунд
+            int millisecondsToWait = 1000;
             Thread.Sleep(millisecondsToWait);
             //driver.Close();
             driver.Quit();

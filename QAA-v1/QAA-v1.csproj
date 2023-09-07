@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="pages\BasePage.cs" />
+    <Compile Include="pages\CartPage.cs" />
     <Compile Include="pages\InventoryPage.cs" />
     <Compile Include="pages\LoginPage.cs" />
     <Compile Include="Program.cs" />

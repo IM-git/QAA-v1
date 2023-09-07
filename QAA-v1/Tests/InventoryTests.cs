@@ -11,14 +11,16 @@ namespace QAA_v1.Tests
 {
     internal class InventoryTests : BaseTests
     {
+
         [Test, Category("Chrome"), Category("InventoryPageTests1")]
         public void CheckCartSauceLabsBackpackButton()
         {
             InventoryPage inventoryPage = new InventoryPage(driver);
             LoginOnPage();
             inventoryPage.ClickAddToCartButton();
-            string value = inventoryPage.CheckExistShoppingCartBadgeItem();
-            CheckValue(value);
+            //string value = inventoryPage.CheckExistShoppingCartBadgeItem();
+            string value = GetStringValue(InventoryPage._shoppingCartBadge);
+            CheckValue(value, "1");
         }
 
         [Test, Category("Chrome"), Category("InventoryPageTests2")]
@@ -27,6 +29,16 @@ namespace QAA_v1.Tests
             InventoryPage inventoryPage = new InventoryPage(driver);
             LoginOnPage();
             inventoryPage.ClickByInventoryItemSauceLabsBackpackItem();
+        }
+
+        [Test, Category("Chrome"), Category("InventoryPageTests3")]
+        public void CheckShoppingCartLinkItem()
+        {
+            InventoryPage inventoryPage = new InventoryPage(driver);
+            LoginOnPage();
+            inventoryPage.ClickByShoppingCartLinkItem();
+            string value = GetStringValue(CartPage._yourCartTitle);
+            CheckValue(value, "Your Cart");
         }
     }
 }
