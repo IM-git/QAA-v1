@@ -34,6 +34,17 @@ namespace QAA_v1.Tests
 
         }
 
+        public void CheckValue(string value)
+        {
+            Assert.AreEqual("1", value, $"Error. Expected value: {value}");
+            //if (value != "1")
+            //{
+            //    //Console.WriteLine("Not equals 1");
+            //    Assert.AreEqual("1", value, $"Error. Expected value: {value}");
+            //    driver.Close();
+            //}
+        }
+
         [TearDown]
         public void TearDown()
         {

@@ -17,6 +17,8 @@ namespace QAA_v1.Tests
             InventoryPage inventoryPage = new InventoryPage(driver);
             LoginOnPage();
             inventoryPage.ClickAddToCartButton();
+            string value = inventoryPage.CheckExistShoppingCartBadgeItem();
+            CheckValue(value);
         }
 
         [Test, Category("Chrome"), Category("InventoryPageTests2")]
