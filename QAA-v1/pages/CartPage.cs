@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QAA_v1.pages
 {
-    public class CartPage : BasePage
+    public class CartPage
     {
         public const string _yourCartTitle = ".header_secondary_container .title";
     }

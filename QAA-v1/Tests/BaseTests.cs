@@ -21,7 +21,6 @@ namespace QAA_v1.Tests
         [SetUp]
         public void Open()
         {
-            //driver.Url = _testwebsite;
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl(_testwebsite);
             driver.Manage().Window.Maximize();
@@ -39,6 +38,8 @@ namespace QAA_v1.Tests
             Assert.AreEqual(checker, value, $"Error. Expected value: {value}");
         }
 
+        public object FindElement(string CssValue) => driver.FindElement(By.CssSelector(CssValue));
+
         public string GetStringValue(string CssValue) => driver.FindElement(By.CssSelector(CssValue)).Text;
 
         [TearDown]
@@ -46,7 +47,6 @@ namespace QAA_v1.Tests
         {
             int millisecondsToWait = 1000;
             Thread.Sleep(millisecondsToWait);
-            //driver.Close();
             driver.Quit();
         }
     }
