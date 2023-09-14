@@ -27,13 +27,13 @@ namespace QAA_v1.pages
         private readonly By _shoppingCartBadgeClass = By.ClassName(_shoppingCartBadge);
         private readonly By _shoppingCartLinkCssSelector = By.CssSelector(_shoppingCartLink);
 
-        public InventoryPage(IWebDriver webDriver) => driver = webDriver;
-        public IWebDriver driver { get; }
+        private IWebDriver _driver;
+        public InventoryPage() => _driver = WebDriverSingleton.Instance;
 
-        IWebElement addToCartSauceLabsBackpackButtonField => driver.FindElement(_addToCartSauceLabsBackpackButtonIDValue);
-        IWebElement inventoryItemSauceLabsBackpackItemXpathField => driver.FindElement(_inventoryItemSauceLabsBackpackItemXpath);
-        IWebElement shoppingCartBadgeItem => driver.FindElement(_shoppingCartBadgeClass);
-        IWebElement shoppingCartLinkItem => driver.FindElement(_shoppingCartLinkCssSelector);
+        IWebElement addToCartSauceLabsBackpackButtonField => _driver.FindElement(_addToCartSauceLabsBackpackButtonIDValue);
+        IWebElement inventoryItemSauceLabsBackpackItemXpathField => _driver.FindElement(_inventoryItemSauceLabsBackpackItemXpath);
+        IWebElement shoppingCartBadgeItem => _driver.FindElement(_shoppingCartBadgeClass);
+        IWebElement shoppingCartLinkItem => _driver.FindElement(_shoppingCartLinkCssSelector);
 
         public void ClickAddToCartButton() => addToCartSauceLabsBackpackButtonField.Click();
         public void ClickByInventoryItemSauceLabsBackpackItem() => inventoryItemSauceLabsBackpackItemXpathField.Click();

@@ -15,7 +15,7 @@ namespace QAA_v1.Tests
         [Test, Category("Chrome"), Category("InventoryPageTests1")]
         public void CheckCartSauceLabsBackpackButton()
         {
-            InventoryPage inventoryPage = new InventoryPage(driver);
+            InventoryPage inventoryPage = new InventoryPage();
             LoginOnPage();
             inventoryPage.ClickAddToCartButton();
             //string value = inventoryPage.CheckExistShoppingCartBadgeItem();
@@ -26,7 +26,7 @@ namespace QAA_v1.Tests
         [Test, Category("Chrome"), Category("InventoryPageTests2")]
         public void CheckCartSauceLabsBackpackItem()
         {
-            InventoryPage inventoryPage = new InventoryPage(driver);
+            InventoryPage inventoryPage = new InventoryPage();
             LoginOnPage();
             inventoryPage.ClickByInventoryItemSauceLabsBackpackItem();
         }
@@ -34,7 +34,7 @@ namespace QAA_v1.Tests
         [Test, Category("Chrome"), Category("InventoryPageTests3")]
         public void CheckShoppingCartLinkItem()
         {
-            InventoryPage inventoryPage = new InventoryPage(driver);
+            InventoryPage inventoryPage = new InventoryPage();
             LoginOnPage();
             inventoryPage.ClickByShoppingCartLinkItem();
             string value = GetStringValue(CartPage._yourCartTitle);

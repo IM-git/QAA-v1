@@ -17,7 +17,7 @@ namespace QAA_v1
     [TestFixture]
     public class Tests1
     {
-        private IWebDriver driver;
+        private IWebDriver _driver;
         public const string _testwebsite = "https://www.saucedemo.com/";
         private const string _username = "user-name";
         private const string _password = "password";
@@ -34,15 +34,14 @@ namespace QAA_v1
         [SetUp]
         public void Setup()
         {
-            //driver = new ChromeDriver();
-            driver = new FirefoxDriver();
-            driver.Navigate().GoToUrl(_testwebsite);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10); //adding implicit wait
+            _driver = new FirefoxDriver();
+            _driver.Navigate().GoToUrl(_testwebsite);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10); //adding implicit wait
 
             // WebDriverWait waitObj = new WebDriverWait(driver, TimeSpan.FromSeconds(10)); // create webdriver object with timeout 10 seconds
             // IWebElement click_button = waitObj.Until(e => e.FindElement(_loginButton)); // caused internally by Element not found exception. else it will execute further. 
             // click_button.Click();
-            driver.Manage().Window.Maximize();
+            _driver.Manage().Window.Maximize();
         }
 
         [Test, Category("FireFox"), Category("Sepate example")]
@@ -51,20 +50,20 @@ namespace QAA_v1
             int millisecondsToWait = 1000;
             Thread.Sleep(millisecondsToWait);
 
-            string title = driver.Title;
+            string title = _driver.Title;
             Console.WriteLine($"The title of the site is: {title}''");
             Assert.AreEqual(_expecteAppLogoValue, title, $"Error. Expected value: {_expecteAppLogoValue}");
 
-            var usernameField = driver.FindElement(_usernameValue);
+            var usernameField = _driver.FindElement(_usernameValue);
             usernameField.SendKeys("standard_user");
 
-            var passwordField = driver.FindElement(_passwordValue);
+            var passwordField = _driver.FindElement(_passwordValue);
             passwordField.SendKeys("secret_sauce");
 
-            var signInButton = driver.FindElement(_loginButton);
+            var signInButton = _driver.FindElement(_loginButton);
             signInButton.Click();
 
-            var actualAppLogo = driver.FindElement(_appLogoValue).Text;
+            var actualAppLogo = _driver.FindElement(_appLogoValue).Text;
 
             Assert.AreEqual(_expecteAppLogoValue, actualAppLogo, $"Error. Expected value: {_expecteAppLogoValue}");
         }
@@ -74,8 +73,8 @@ namespace QAA_v1
         {
             int millisecondsToWait = 3000;
             Thread.Sleep(millisecondsToWait);
-            driver.Close();
-            driver.Quit();
+            _driver.Close();
+            _driver.Quit();
         }
     }
 }

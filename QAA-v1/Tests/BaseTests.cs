@@ -14,21 +14,22 @@ namespace QAA_v1.Tests
     public class BaseTests
     {
         //public IWebDriver driver = new OpenQA.Selenium.Chrome.ChromeDriver();
-        public IWebDriver driver = null;
+        private IWebDriver _driver;
+        public BaseTests() => _driver = WebDriverSingleton.Instance;
 
         public const string _testwebsite = "https://www.saucedemo.com/";
 
         [SetUp]
         public void Open()
         {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl(_testwebsite);
-            driver.Manage().Window.Maximize();
+            _driver = new ChromeDriver();
+            _driver.Navigate().GoToUrl(_testwebsite);
+            _driver.Manage().Window.Maximize();
         }
 
         public void LoginOnPage()
         {
-            LoginPage loginPage = new LoginPage(driver);
+            LoginPage loginPage = new LoginPage();
             loginPage.LoginOnPage();
 
         }
@@ -38,16 +39,16 @@ namespace QAA_v1.Tests
             Assert.AreEqual(checker, value, $"Error. Expected value: {value}");
         }
 
-        public object FindElement(string CssValue) => driver.FindElement(By.CssSelector(CssValue));
+        public object FindElement(string CssValue) => _driver.FindElement(By.CssSelector(CssValue));
 
-        public string GetStringValue(string CssValue) => driver.FindElement(By.CssSelector(CssValue)).Text;
+        public string GetStringValue(string CssValue) => _driver.FindElement(By.CssSelector(CssValue)).Text;
 
         [TearDown]
         public void TearDown()
         {
             int millisecondsToWait = 1000;
             Thread.Sleep(millisecondsToWait);
-            driver.Quit();
+            _driver.Quit();
         }
     }
 }

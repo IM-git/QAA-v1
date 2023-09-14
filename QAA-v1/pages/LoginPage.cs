@@ -20,18 +20,20 @@ namespace QAA_v1.pages
         private readonly By _passwordValue = By.Id(_passwordID);
         private readonly By _loginButton = By.Id(_loginButtonID);
 
-        public LoginPage(IWebDriver webDriver) => driver = webDriver;
+        //public LoginPage(IWebDriver webDriver) => driver = webDriver;
 
-        public IWebDriver driver { get; }
+        //public IWebDriver driver { get; }
+        private IWebDriver _driver;
+        public LoginPage() => _driver = WebDriverSingleton.Instance;
 
-        IWebElement usernameField => driver.FindElement(_usernameValue);
-        IWebElement passwordField => driver.FindElement(_passwordValue);
-        IWebElement signInButton => driver.FindElement(_loginButton);
+        IWebElement usernameField => _driver.FindElement(_usernameValue);
+        IWebElement passwordField => _driver.FindElement(_passwordValue);
+        IWebElement signInButton => _driver.FindElement(_loginButton);
 
         public void EnterUserName() => usernameField.SendKeys(_username);
         public void EnterPassword() => passwordField.SendKeys(_password);
         public void ClickSignInButton() => signInButton.Click();
-        public void ClosePage() => driver.Close();
+        public void ClosePage() => _driver.Close();
 
         public void LoginOnPage()
         {
