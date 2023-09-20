@@ -68,6 +68,34 @@ namespace QAA_v1
             Assert.AreEqual(_expecteAppLogoValue, actualAppLogo, $"Error. Expected value: {_expecteAppLogoValue}");
         }
 
+        [TestCase("standard_user", "secret_sauce")]
+        [TestCase("locked_out_user", "secret_sauce")]
+        [TestCase("problem_user", "secret_sauce")]
+        [TestCase("performance_glitch_user", "secret_sauce")]
+        [Test, Category("FireFox"), Category("Sepate example")]
+        public void Test2(string username, string password)
+        {
+            int millisecondsToWait = 1000;
+            Thread.Sleep(millisecondsToWait);
+
+            string title = _driver.Title;
+            Console.WriteLine($"The title of the site is: {title}''");
+            Assert.AreEqual(_expecteAppLogoValue, title, $"Error. Expected value: {_expecteAppLogoValue}");
+
+            var usernameField = _driver.FindElement(_usernameValue);
+            usernameField.SendKeys(username);
+
+            var passwordField = _driver.FindElement(_passwordValue);
+            passwordField.SendKeys(password);
+
+            var signInButton = _driver.FindElement(_loginButton);
+            signInButton.Click();
+
+            var actualAppLogo = _driver.FindElement(_appLogoValue).Text;
+
+            Assert.AreEqual(_expecteAppLogoValue, actualAppLogo, $"Error. Expected value: {_expecteAppLogoValue}");
+        }
+
         [TearDown]
         public void TearDown()
         {

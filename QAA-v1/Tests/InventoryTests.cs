@@ -11,12 +11,14 @@ namespace QAA_v1.Tests
 {
     internal class InventoryTests : BaseTests
     {
+        private const string _username = "standard_user";
+        private const string _password = "secret_sauce";
 
         [Test, Category("Chrome"), Category("InventoryPageTests1")]
         public void CheckCartSauceLabsBackpackButton()
         {
             InventoryPage inventoryPage = new InventoryPage();
-            LoginOnPage();
+            LoginOnPage(_username, _password);
             inventoryPage.ClickAddToCartButton();
             string value = GetStringValue(InventoryPage._shoppingCartBadge);
             CheckValue(value, "1");
@@ -26,7 +28,7 @@ namespace QAA_v1.Tests
         public void CheckCartSauceLabsBackpackItem()
         {
             InventoryPage inventoryPage = new InventoryPage();
-            LoginOnPage();
+            LoginOnPage(_username, _password);
             inventoryPage.ClickByInventoryItemSauceLabsBackpackItem();
         }
 
@@ -34,7 +36,7 @@ namespace QAA_v1.Tests
         public void CheckShoppingCartLinkItem()
         {
             InventoryPage inventoryPage = new InventoryPage();
-            LoginOnPage();
+            LoginOnPage(_username, _password);
             inventoryPage.ClickByShoppingCartLinkItem();
             string value = GetStringValue(CartPage._yourCartTitle);
             CheckValue(value, "Your Cart");

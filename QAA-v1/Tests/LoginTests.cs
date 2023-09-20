@@ -12,49 +12,17 @@ namespace QAA_v1.Tests
     [TestFixture]
     public class LoginTests : BaseTests
     {
-
+        //[TestCase("locked_out_user", "secret_sauce")]
+        [TestCase("standard_user", "secret_sauce")]
+        [TestCase("problem_user", "secret_sauce")]
+        [TestCase("performance_glitch_user", "secret_sauce")]
         [Test, Category("Chrome"), Category("LoginPageTest1")]
-        public void Login1()
+        public void Login1(string username, string password)
         {
             LoginPage loginPage = new LoginPage();
-            loginPage.EnterUserName();
-            loginPage.EnterPassword();
+            loginPage.EnterUserName(username);
+            loginPage.EnterPassword(password);
             loginPage.ClickSignInButton();
-
-
-        }
-
-        [Test, Category("Chrome"), Category("LoginPageTest2")]
-        public void Login2()
-        {
-            LoginPage loginPage = new LoginPage();
-            loginPage.EnterUserName();
-            loginPage.EnterPassword();
-            loginPage.ClickSignInButton();
-
-
-        }
-
-        [Test, Category("Chrome"), Category("LoginPageTest3")]
-        public void Login3()
-        {
-            LoginPage loginPage = new LoginPage();
-            loginPage.EnterUserName();
-            loginPage.EnterPassword();
-            loginPage.ClickSignInButton();
-
-
-        }
-
-        [Test, Category("Chrome"), Category("LoginPageTest4")]
-        public void Login4()
-        {
-            LoginPage loginPage = new LoginPage();
-            loginPage.EnterUserName();
-            loginPage.EnterPassword();
-            loginPage.ClickSignInButton();
-            loginPage.ClosePage();
-
         }
     }
 }

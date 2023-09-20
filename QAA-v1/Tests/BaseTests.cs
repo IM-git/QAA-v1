@@ -32,11 +32,11 @@ namespace QAA_v1.Tests
             int millisecondsToWait = 1000;
             Thread.Sleep(millisecondsToWait);
         }
-        public void LoginOnPage()
+        public void LoginOnPage(string username, string password)
         {
             LoginPage loginPage = new LoginPage();
-            loginPage.EnterUserName();
-            loginPage.EnterPassword();
+            loginPage.EnterUserName(username);
+            loginPage.EnterPassword(password);
             loginPage.ClickSignInButton();
 
         }

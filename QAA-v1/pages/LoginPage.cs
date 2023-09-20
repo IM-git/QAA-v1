@@ -9,9 +9,6 @@ namespace QAA_v1.pages
 {
     public class LoginPage : BasePage
     {
-        private const string _username = "standard_user";
-        private const string _password = "secret_sauce";
-
         private const string _usernameID = "user-name";
         private const string _passwordID = "password";
         private const string _loginButtonID = "login-button";
@@ -24,8 +21,8 @@ namespace QAA_v1.pages
         IWebElement passwordField => _driver.FindElement(_passwordValue);
         IWebElement signInButton => _driver.FindElement(_loginButton);
 
-        public void EnterUserName() => usernameField.SendKeys(_username);
-        public void EnterPassword() => passwordField.SendKeys(_password);
+        public void EnterUserName(string _username) => usernameField.SendKeys(_username);
+        public void EnterPassword(string _password) => passwordField.SendKeys(_password);
         public void ClickSignInButton() => signInButton.Click();
         public void ClosePage() => _driver.Close();
     }
