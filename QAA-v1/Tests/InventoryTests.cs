@@ -18,7 +18,6 @@ namespace QAA_v1.Tests
             InventoryPage inventoryPage = new InventoryPage();
             LoginOnPage();
             inventoryPage.ClickAddToCartButton();
-            //string value = inventoryPage.CheckExistShoppingCartBadgeItem();
             string value = GetStringValue(InventoryPage._shoppingCartBadge);
             CheckValue(value, "1");
         }

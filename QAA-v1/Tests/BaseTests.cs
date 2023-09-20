@@ -13,24 +13,31 @@ namespace QAA_v1.Tests
 {
     public class BaseTests
     {
-        //public IWebDriver driver = new OpenQA.Selenium.Chrome.ChromeDriver();
         private IWebDriver _driver;
-        public BaseTests() => _driver = WebDriverSingleton.Instance;
+        //public BaseTests() => _driver = WebDriverSingleton.Instance;
 
         public const string _testwebsite = "https://www.saucedemo.com/";
 
         [SetUp]
         public void Open()
         {
-            _driver = new ChromeDriver();
+            _driver = WebDriverSingleton.Instance;
             _driver.Navigate().GoToUrl(_testwebsite);
             _driver.Manage().Window.Maximize();
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            int millisecondsToWait = 1000;
+            Thread.Sleep(millisecondsToWait);
+        }
         public void LoginOnPage()
         {
             LoginPage loginPage = new LoginPage();
-            loginPage.LoginOnPage();
+            loginPage.EnterUserName();
+            loginPage.EnterPassword();
+            loginPage.ClickSignInButton();
 
         }
 
@@ -43,12 +50,6 @@ namespace QAA_v1.Tests
 
         public string GetStringValue(string CssValue) => _driver.FindElement(By.CssSelector(CssValue)).Text;
 
-        [TearDown]
-        public void TearDown()
-        {
-            int millisecondsToWait = 1000;
-            Thread.Sleep(millisecondsToWait);
-            _driver.Quit();
-        }
+        public void ClosePage() => _driver.Close();
     }
 }

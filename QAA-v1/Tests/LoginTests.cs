@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace QAA_v1.Tests
 {
     [TestFixture]
-    public class LoginTests
+    public class LoginTests : BaseTests
     {
 
         [Test, Category("Chrome"), Category("LoginPageTest1")]
@@ -50,7 +50,10 @@ namespace QAA_v1.Tests
         public void Login4()
         {
             LoginPage loginPage = new LoginPage();
-            loginPage.LoginOnPage();
+            loginPage.EnterUserName();
+            loginPage.EnterPassword();
+            loginPage.ClickSignInButton();
+            loginPage.ClosePage();
 
         }
     }

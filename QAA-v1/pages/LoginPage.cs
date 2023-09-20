@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QAA_v1.pages
 {
-    internal class LoginPage
+    public class LoginPage : BasePage
     {
         private const string _username = "standard_user";
         private const string _password = "secret_sauce";
@@ -20,12 +20,6 @@ namespace QAA_v1.pages
         private readonly By _passwordValue = By.Id(_passwordID);
         private readonly By _loginButton = By.Id(_loginButtonID);
 
-        //public LoginPage(IWebDriver webDriver) => driver = webDriver;
-
-        //public IWebDriver driver { get; }
-        private IWebDriver _driver;
-        public LoginPage() => _driver = WebDriverSingleton.Instance;
-
         IWebElement usernameField => _driver.FindElement(_usernameValue);
         IWebElement passwordField => _driver.FindElement(_passwordValue);
         IWebElement signInButton => _driver.FindElement(_loginButton);
@@ -34,12 +28,5 @@ namespace QAA_v1.pages
         public void EnterPassword() => passwordField.SendKeys(_password);
         public void ClickSignInButton() => signInButton.Click();
         public void ClosePage() => _driver.Close();
-
-        public void LoginOnPage()
-        {
-            EnterUserName();
-            EnterPassword();
-            ClickSignInButton();
-        }
     }
 }

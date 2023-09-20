@@ -9,7 +9,7 @@ namespace QAA_v1.pages
 {
     public class BasePage
     {
-        private IWebDriver _driver;
+        public IWebDriver _driver;
         public BasePage() => _driver = WebDriverSingleton.Instance;
 
         public const string _testwebsite = "https://www.saucedemo.com/";

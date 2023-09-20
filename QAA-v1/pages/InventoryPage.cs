@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QAA_v1.pages
 {
-    public class InventoryPage
+    public class InventoryPage : BasePage
     {
         public const string _addToCartSauceLabsBackpackButtonID = "add-to-cart-sauce-labs-backpack";
 
@@ -26,9 +26,6 @@ namespace QAA_v1.pages
         private readonly By _inventoryItemSauceLabsBackpackItemXpath = By.XPath(_inventoryItemSauceLabsBackpack);
         private readonly By _shoppingCartBadgeClass = By.ClassName(_shoppingCartBadge);
         private readonly By _shoppingCartLinkCssSelector = By.CssSelector(_shoppingCartLink);
-
-        private IWebDriver _driver;
-        public InventoryPage() => _driver = WebDriverSingleton.Instance;
 
         IWebElement addToCartSauceLabsBackpackButtonField => _driver.FindElement(_addToCartSauceLabsBackpackButtonIDValue);
         IWebElement inventoryItemSauceLabsBackpackItemXpathField => _driver.FindElement(_inventoryItemSauceLabsBackpackItemXpath);
