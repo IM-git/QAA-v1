@@ -24,6 +24,5 @@ namespace QAA_v1.pages
         public void EnterUserName(string _username) => usernameField.SendKeys(_username);
         public void EnterPassword(string _password) => passwordField.SendKeys(_password);
         public void ClickSignInButton() => signInButton.Click();
-        public void ClosePage() => _driver.Close();
     }
 }

@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using QAA_v1.pages;
+using QAA_v1.Elements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,10 @@ namespace QAA_v1.Tests
     public class BaseTests
     {
         private IWebDriver _driver;
+
         //public BaseTests() => _driver = WebDriverSingleton.Instance;
+        private const string _username = "standard_user";
+        private const string _password = "secret_sauce";
 
         public const string _testwebsite = "https://www.saucedemo.com/";
 
@@ -32,11 +36,11 @@ namespace QAA_v1.Tests
             int millisecondsToWait = 1000;
             Thread.Sleep(millisecondsToWait);
         }
-        public void LoginOnPage(string username, string password)
+        public void LoginOnPage()
         {
             LoginPage loginPage = new LoginPage();
-            loginPage.EnterUserName(username);
-            loginPage.EnterPassword(password);
+            loginPage.EnterUserName(_username);
+            loginPage.EnterPassword(_password);
             loginPage.ClickSignInButton();
 
         }
@@ -50,6 +54,5 @@ namespace QAA_v1.Tests
 
         public string GetStringValue(string CssValue) => _driver.FindElement(By.CssSelector(CssValue)).Text;
 
-        public void ClosePage() => _driver.Close();
     }
 }

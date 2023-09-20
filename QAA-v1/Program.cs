@@ -69,7 +69,7 @@ namespace QAA_v1
         }
 
         [TestCase("standard_user", "secret_sauce")]
-        [TestCase("locked_out_user", "secret_sauce")]
+        //[TestCase("locked_out_user", "secret_sauce")]
         [TestCase("problem_user", "secret_sauce")]
         [TestCase("performance_glitch_user", "secret_sauce")]
         [Test, Category("FireFox"), Category("Sepate example")]

@@ -13,5 +13,7 @@ namespace QAA_v1.pages
         public BasePage() => _driver = WebDriverSingleton.Instance;
 
         public const string _testwebsite = "https://www.saucedemo.com/";
+
+        public void ClosePage() => _driver.Close();
     }
 }
